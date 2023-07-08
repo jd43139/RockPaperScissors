@@ -12,26 +12,26 @@ let playerScore=0
 function playRound(computerSelection, playerSelection){
     
     if(computerSelection==playerSelection){
-        return "Tied!"
+        return `Tied!\n Computer: ${computerSelection} Player: ${playerSelection}`
     }else{
         if(computerSelection=="rock" && playerSelection=="scissors"){
             computerScore+=1
-            return "You Lose"
+            return `You Lose\n Computer: ${computerSelection} Player: ${playerSelection}`
         }else if(computerSelection=="rock" && playerSelection=="paper"){
             playerScore+=1
-            return "You Win"
+            return `You Win\n Computer: ${computerSelection} Player: ${playerSelection}`
         }else if(computerSelection=="scissors" && playerSelection=="paper"){
             computerScore+=1
-            return "You Lose"
+            return `You Lose\n Computer: ${computerSelection} Player: ${playerSelection}`
         }else if(computerSelection=="scissors" && playerSelection=="rock"){
             playerScore+=1
-            return "You Win"
+            return `You Win\n Computer: ${computerSelection} Player: ${playerSelection}`
         }else if(computerSelection=="paper" && playerSelection=="rock"){
             computerScore+=1
-            return "You Lose"
+            return `You Lose\n Computer: ${computerSelection} Player: ${playerSelection}`
         }else{
             playerScore+=1
-            return "You Win"
+            return `You Win\n Computer: ${computerSelection} Player: ${playerSelection}`
         }
     }
 }
