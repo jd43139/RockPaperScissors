@@ -39,8 +39,9 @@ function playRound(computerSelection, playerSelection){
 function game(){
     let rounds=5
     while(rounds>0){
-        playRound()
+        console.log(playRound(getComputerChoice(),getPlayerChoice()))
         rounds-=1
     }
+    console.log(playerScore, computerScore)
 }
-
+game()
