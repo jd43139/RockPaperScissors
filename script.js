@@ -8,4 +8,4 @@ function playerSelection(){
     return playerChoice.toLowerCase()
 }
 
-
+function playRound()
