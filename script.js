@@ -12,33 +12,31 @@ let playerScore=0
 function playRound(computerSelection, playerSelection){
     
     if(computerSelection==playerSelection){
-        return `Tied!\n Computer: ${computerSelection} Player: ${playerSelection}\n
-    Computer Score: ${computerScore} Player Score: ${playerScore}`
+        return `Tied!\nComputer chose: ${computerSelection} | You chose: ${playerSelection}\nComputer Score: ${computerScore} | Player Score: ${playerScore}`
     }else{
         if(computerSelection=="rock" && playerSelection=="scissors"){
             computerScore+=1
-            return `You Lose\n Computer: ${computerSelection} Player: ${playerSelection}\n
-        Computer Score: ${computerScore} Player Score: ${playerScore}`
+            return `You Lose\nComputer chose: ${computerSelection} | You chose: ${playerSelection}\nComputer Score: ${computerScore} | Player Score: ${playerScore}`
+
         }else if(computerSelection=="rock" && playerSelection=="paper"){
             playerScore+=1
-            return `You Win\n Computer: ${computerSelection} Player: ${playerSelection}\n
-        Computer Score: ${computerScore} Player Score: ${playerScore}`
+            return `You Win\nComputer chose: ${computerSelection} | You chose: ${playerSelection}\nComputer Score: ${computerScore} | Player Score: ${playerScore}`
+
         }else if(computerSelection=="scissors" && playerSelection=="paper"){
             computerScore+=1
-            return `You Lose\n Computer: ${computerSelection} Player: ${playerSelection}\n
-        Computer Score: ${computerScore} Player Score: ${playerScore}`
+            return `Computer chose: ${computerSelection} | You chose: ${playerSelection}\nComputer Score: ${computerScore} | Player Score: ${playerScore}`
+
         }else if(computerSelection=="scissors" && playerSelection=="rock"){
             playerScore+=1
-            return `You Win\n Computer: ${computerSelection} Player: ${playerSelection}\n
-        Computer Score: ${computerScore} Player Score: ${playerScore}`
+            return `You Win\nComputer chose: ${computerSelection} | You chose: ${playerSelection}\nComputer Score: ${computerScore} | Player Score: ${playerScore}`
+
         }else if(computerSelection=="paper" && playerSelection=="rock"){
             computerScore+=1
-            return `You Lose\n Computer: ${computerSelection} Player: ${playerSelection}\n
-        Computer Score: ${computerScore} Player Score: ${playerScore}`
+            return `You Lose\nComputer chose: ${computerSelection} | You chose: ${playerSelection}\nComputer Score: ${computerScore} | Player Score: ${playerScore}`
+
         }else{
             playerScore+=1
-            return `You Win\n Computer: ${computerSelection} Player: ${playerSelection}\n
-        Computer Score: ${computerScore} Player Score: ${playerScore}`
+            return `You Win\nComputer chose: ${computerSelection} | You chose: ${playerSelection}\nComputer Score: ${computerScore} | Player Score: ${playerScore}`
         }
     }
 }
@@ -47,9 +45,9 @@ function finalResult(){
         return `DRAW\nComputer Score: ${computerScore} | Player Score: ${playerScore}`
     }else{
         if(playerScore<computerScore){
-            return `You LOST\nComputer Score: ${computerScore} | Player Score: ${playerScore}`
+            return `You LOST\nComputer Total Score: ${computerScore} | Player Total Score: ${playerScore}`
         }else{
-            return `YOU WON\nComputer Score: ${computerScore} | Player Score: ${playerScore}`
+            return `YOU WON\nComputer Total Score: ${computerScore} | Player Total Score: ${playerScore}`
         }
     }
 
