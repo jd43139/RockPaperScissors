@@ -8,8 +8,7 @@ function getPlayerChoice(){
     playerChoice=prompt("Please type Rock, Paper, or Scissors","Rock")
     return playerChoice.toLowerCase()
 }
-let computerScore=0
-let playerScore=0
+
 
 function playerWinsround(computerSelection, playerSelection){
     if((computerSelection=="rock" && playerSelection=="scissors" ||(computerSelection=="scissors" && playerSelection=="paper")) || (computerSelection=="paper" && playerSelection=="rock")){
@@ -20,14 +19,20 @@ function playerWinsround(computerSelection, playerSelection){
 
 }
 
+let computerScore=0
+let playerScore=0
+
 function playRound(computerSelection, playerSelection){
     
     if(computerSelection==playerSelection){
         return `Tied!\nComputer selected: ${computerSelection} You selected: ${playerSelection}\nComputer current Score: ${computerScore} | Your Current Score: ${playerScore}`
     }else{
         if(playerWinsround(computerSelection, playerSelection)){
+            playerScore+=1
             return `You Win\nComputer selected: ${computerSelection} You selected: ${playerSelection}\nComputer current Score: ${computerScore} | Your Current Score: ${playerScore}`
+            
         }else{
+            computerScore+=1
             return `You Lose\nComputer selected: ${computerSelection} You selected: ${playerSelection}\nComputer current Score: ${computerScore} | Your Current Score: ${playerScore}`
         }
         
