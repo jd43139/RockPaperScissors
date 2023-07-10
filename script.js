@@ -11,31 +11,27 @@ function getPlayerChoice(){
 let computerScore=0
 let playerScore=0
 
+function playerWinsround(computerSelection, playerSelection){
+    if((computerSelection=="rock" && playerSelection=="scissors" ||(computerSelection=="scissors" && playerSelection=="paper")) || (computerSelection=="paper" && playerSelection=="rock")){
+        return false
+    }else{
+        return true
+    }
+
+}
 
 function playRound(computerSelection, playerSelection){
     
     if(computerSelection==playerSelection){
         return `Tied!\nComputer selected: ${computerSelection} You selected: ${playerSelection}\nComputer current Score: ${computerScore} | Your Current Score: ${playerScore}`
     }else{
-        if(computerSelection=="rock" && playerSelection=="scissors"){
-            computerScore+=1
-            return `You Lose\nComputer selected: ${computerSelection} You selected: ${playerSelection}\nComputer current Score: ${computerScore} | Your Current Score: ${playerScore}`
-        }else if(computerSelection=="rock" && playerSelection=="paper"){
-            playerScore+=1
+        if(playerWinsround(computerSelection, playerSelection)){
             return `You Win\nComputer selected: ${computerSelection} You selected: ${playerSelection}\nComputer current Score: ${computerScore} | Your Current Score: ${playerScore}`
-        }else if(computerSelection=="scissors" && playerSelection=="paper"){
-            computerScore+=1
-            return `You Lose\nComputer selected: ${computerSelection} You selected: ${playerSelection}\nComputer current Score: ${computerScore} | Your Current Score: ${playerScore}`
-        }else if(computerSelection=="scissors" && playerSelection=="rock"){
-            playerScore+=1
-            return `You Win\nComputer selected: ${computerSelection} You selected: ${playerSelection}\nComputer current Score: ${computerScore} | Your Current Score: ${playerScore}`
-        }else if(computerSelection=="paper" && playerSelection=="rock"){
-            computerScore+=1
-            return `You Loose\nComputer selected: ${computerSelection} You selected: ${playerSelection}\nComputer current Score: ${computerScore} | Your Current Score: ${playerScore}`
         }else{
-            playerScore+=1
-            return `You Win\nComputer selected: ${computerSelection} You selected: ${playerSelection}\nComputer current Score: ${computerScore} | Your Current Score: ${playerScore}`
+            return `You Lose\nComputer selected: ${computerSelection} You selected: ${playerSelection}\nComputer current Score: ${computerScore} | Your Current Score: ${playerScore}`
         }
+        
+        
     }
 }
 function finalResult(){
