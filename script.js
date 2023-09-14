@@ -11,7 +11,9 @@ function getPlayerChoice(){
 
 
 function playerWinsround(computerSelection, playerSelection){
-    if((computerSelection=="rock" && playerSelection=="scissors" ||(computerSelection=="scissors" && playerSelection=="paper")) || (computerSelection=="paper" && playerSelection=="rock")){
+    if((computerSelection=="rock" && playerSelection=="scissors" ||
+    (computerSelection=="scissors" && playerSelection=="paper")) ||
+     (computerSelection=="paper" && playerSelection=="rock")){
         return false
     }else{
         return true
@@ -61,17 +63,19 @@ function isValidAnswer(){
 
 }
 function game(){
-    let rounds=5
-    while(rounds>0){
+        if(playerScore>=5 || computerScore>=5){
+            console.log(finalResult())
+            return;
+        }
         const computerChoice=getComputerChoice()
         if(isValidAnswer()){
             console.log(playRound(computerChoice,playerChoice))
-            rounds-=1
+           
         }else{
             alert("Type a valid choice")
         }
         
-    }
-    console.log(finalResult())
+    
+    
 }
 game()
