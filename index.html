@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RockPaoerScissors</title>
 </head>
 <body>
-   <h1>Rock Paper Scissors</h1> 
+  
+   <div class="game-container">
+    <h1>Rock Paper Scissors</h1>
+
+    <div class="buttons">
+        <button id="choice" class="rock">Rock</button>
+        <button id="choice" class="paper">Paper</button>
+        <button id="choice" class="scissors">Scissors</button>
+    </div>
+        
+    <div id="result">
+            <div id="score">
+                <div id="computer-section">
+                    <div>Computer</div>
+                    <div id="computer-score">0</div>
+                    <div id="computer-choice"></div>
+
+                </div>
+                <div id="player-section">
+                    <div>Player</div>
+                    <div id="player-score">0</div>
+                    <div id="player-choice"></div>
+                </div>
+            </div>
+            <div id="conainer_round_result">
+            <div id="round-result"></div> 
+            </div>
+            <div class="reset-container">
+                <button id="resetButton">reset</button>
+            </div>
+            
+        </div>
+        
+   </div>
+   
+    
 </body>
 <script src="script.js"></script>
+
 </html>

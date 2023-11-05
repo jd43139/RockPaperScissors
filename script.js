@@ -3,17 +3,50 @@ function getComputerChoice(){
     let random = Math.floor(Math.random()*3)
     return options[random];
 }
+let divResult = document.querySelector("#result")
 let playerChoice=""
-function getPlayerChoice(){
-    playerChoice=prompt("Please type Rock, Paper, or Scissors","Rock")
-    return playerChoice.toLowerCase()
-}
+let computerChoice = ""
+let computerResults = document.querySelector("#computer-score")
+let playerResult = document.querySelector("#player-score")
+let roundResults = document.querySelector("#round-result")
+let computerChoiceDiv = document.querySelector("#computer-choice")
+let playerChoiceDiv = document.querySelector("#player-choice")
+const buttons = document.querySelectorAll("#choice")
 
 
-function playerWinsround(computerSelection, playerSelection){
-    if((computerSelection=="rock" && playerSelection=="scissors" ||
-    (computerSelection=="scissors" && playerSelection=="paper")) ||
-     (computerSelection=="paper" && playerSelection=="rock")){
+buttons.forEach(button => button.addEventListener("click", function(){
+    console.log("active")
+    playerChoice = button.classList[0]
+    computerChoice = getComputerChoice()
+    let round = playRound(playerChoice,computerChoice)
+    console.log(`ROUND: ${round}`)
+   
+    if(!round)return ;/*LOOK AT LINE 63*/
+    computerResults.textContent=computerScore
+    playerResult.textContent=playerScore
+    roundResults.textContent=round
+    playerChoiceDiv.textContent = playerChoice
+    
+    computerChoiceDiv.textContent = computerChoice 
+
+    console.log(` player:${playerChoice}`)
+    console.log(`Computer : ${computerChoice}`)
+    
+
+
+   
+    
+   
+    
+    
+    
+}))
+
+
+function playerWinsround(playerChoice, computerChoice){
+    if((computerChoice=="rock" && playerChoice=="scissors" ||
+    (computerChoice=="scissors" && playerChoice=="paper")) ||
+     (computerChoice=="paper" && playerChoice=="rock")){
         return false
     }else{
         return true
@@ -24,36 +57,64 @@ function playerWinsround(computerSelection, playerSelection){
 let computerScore=0
 let playerScore=0
 
-function playRound(computerSelection, playerSelection){
-    
-    if(computerSelection==playerSelection){
-        return `Tied!\nComputer selected: ${computerSelection} You selected: ${playerSelection}\nComputer current Score: ${computerScore} | Your Current Score: ${playerScore}`
+function playRound(playerChoice, computerChoice){
+    let check = playerWinsround(playerChoice, computerChoice)
+    let statment = ""
+    console.log(`SCORE TOP ${playerScore} ${computerScore}`)
+    if(playerScore>=5 || computerScore>=5)return;/* This condition Will be fired when score top become 5*/
+    if(computerChoice==playerChoice){
+        statment =  `Tied! `
     }else{
-        if(playerWinsround(computerSelection, playerSelection)){
+        if(check){
             playerScore+=1
-            return `You Win\nComputer selected: ${computerSelection} You selected: ${playerSelection}\nComputer current Score: ${computerScore} | Your Current Score: ${playerScore}`
+            statment = `You Win!`
             
         }else{
             computerScore+=1
-            return `You Lose\nComputer selected: ${computerSelection} You selected: ${playerSelection}\nComputer current Score: ${computerScore} | Your Current Score: ${playerScore}`
+            statment = `You Lose!`
         }
         
         
     }
+    console.log(`SCORE BOTTOM ${playerScore} ${computerScore}`)
+    if(playerScore>=5 || computerScore>=5){/**Final result will be displyed once either player score five */
+        resetButton.style.display="block"
+        return finalResult()
+    }
+        
+    return statment
+        
+    
 }
 function finalResult(){
     if(playerScore==computerScore){
-        return `DRAW\nComputer Total Score: ${computerScore} | Your Total Score: ${playerScore}`
+        return `DRAW!`
     }else{
         if(playerScore<computerScore){
-            return `You LOST\nComputer Total Score: ${computerScore} | Your Total Score: ${playerScore}`
+            return `You LOST!`
         }else{
-            return `YOU WON\nComputer Total Score: ${computerScore} | Your  Total Score: ${playerScore}`
+            return `YOU WON!`
         }
     }
 
 }
-function isValidAnswer(){
+let resetButton = document.querySelector("#resetButton")
+resetButton.style.display = "none"
+function resetButtonf(){
+    playerScore = 0
+    computerScore = 0
+    computerResults.textContent= computerScore
+    playerResult.textContent=playerScore
+    roundResults.textContent=""
+    playerChoiceDiv.textContent = ""
+    
+    computerChoiceDiv.textContent = ""
+    resetButton.style.display = "none"
+
+
+}
+resetButton.addEventListener("click", resetButtonf)
+/*function isValidAnswer(){
     playerChoice=getPlayerChoice()
     if(playerChoice=="rock" || playerChoice=="paper" || playerChoice=="scissors"){
         return true
@@ -61,21 +122,7 @@ function isValidAnswer(){
         return false
     }
 
-}
-function game(){
-        if(playerScore>=5 || computerScore>=5){
-            console.log(finalResult())
-            return;
-        }
-        const computerChoice=getComputerChoice()
-        if(isValidAnswer()){
-            console.log(playRound(computerChoice,playerChoice))
-           
-        }else{
-            alert("Type a valid choice")
-        }
-        
-    
-    
-}
-game()
+}*/
+
+
+//buttons.forEach(button => button.addEventListener("click", () => console.log(test())))
